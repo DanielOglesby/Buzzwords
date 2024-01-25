@@ -1,5 +1,11 @@
 <script>
-    let buttonText = "Click me";
+	import { goto } from "$app/navigation";
+
+    let buttonText = "Begin playing Buzzwords! 🐝";
+
+    function goToGame() {
+        goto("/game");
+    }
 </script>
 
 <style>
@@ -14,7 +20,7 @@
 </style>
 
 <main>
-    <div>
-        <button class="button" style="margin: 0 auto;">{buttonText}</button>
+    <div class="flex justify-center items-center h-screen">
+        <button class="button" style="margin: 0 auto;" on:click={goToGame}>{buttonText}</button>
     </div>
 </main>
