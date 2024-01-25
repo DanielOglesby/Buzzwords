@@ -2,18 +2,18 @@
     import axios from 'axios';
 
     let data;
-
     let buttonText = "Start new round!";
-
-    let letters: string[] = generateRandomLetters();
-    let words = data;
+    let letters: string = generateRandomLetters();
+    let words: string[];
 
     async function fetchData() {
-        generateRandomLetters();
+        letters = generateRandomLetters();
+        console.log('randomletters', letters);
         
         try {
-            const response = await axios.get(`http://www.anagramica.com/all/${letters}`);
-            data = response.data;
+            const response = await axios.get(`https://8xxui291y1.execute-api.us-east-2.amazonaws.com/anagrams?letters=${letters}`);
+            data = response.data.all;
+            console.log('data', data);
             words = data;
         } catch (error) {
             console.error('Error fetching data', error);
@@ -28,15 +28,18 @@
         }
         return result;
     }
-
-    console.log(letters);
-    console.log(words);
-
 </script>
 
 <main>
     <div class="flex justify-center items-center">
         <p class="text-8xl">{letters}</p>
+    </div>
+    <div class="flex justify-center items-center text-2xl">
+        {#if words}
+            {#each words as word}
+                <p>{word}...</p>
+            {/each}
+        {/if}
     </div>
     <div class="flex justify-center items-center h-screen">
         <button class="button" style="margin: 0 auto;" on:click={fetchData}>{buttonText}</button>

@@ -26,6 +26,9 @@ const config = {
 			'child-src': ['*'],
 			'worker-src': ['*'],
 		  }
+	},
+	csrf: {
+		checkOrigin: false,
 	}
   },
 };
