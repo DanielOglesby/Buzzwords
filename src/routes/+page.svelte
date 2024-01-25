@@ -8,6 +8,12 @@
     }
 </script>
 
+<main>
+    <div class="flex justify-center items-center h-screen">
+        <button class="button" style="margin: 0 auto;" on:click={goToGame}>{buttonText}</button>
+    </div>
+</main>
+
 <style>
     .button {
         background-color: #333;
@@ -18,9 +24,3 @@
         cursor: pointer;
     }
 </style>
-
-<main>
-    <div class="flex justify-center items-center h-screen">
-        <button class="button" style="margin: 0 auto;" on:click={goToGame}>{buttonText}</button>
-    </div>
-</main>
