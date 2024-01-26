@@ -19,14 +19,12 @@
   async function fetchData() {
     foundWords = [];
     letters = generateRandomLetters();
-    console.log("randomletters", letters);
 
     try {
       const response = await axios.get(
         `https://8xxui291y1.execute-api.us-east-2.amazonaws.com/anagrams?letters=${letters}`,
       );
       data = response.data.all;
-      console.log("data", data);
       words = data.filter((word) => word.length > 2);
     } catch (error) {
       console.error("Error fetching data", error);
@@ -51,7 +49,6 @@
         foundWords = [...foundWords, inputText];
       }
       inputText = "";
-      console.log(foundWords);
     }
   }
 </script>
