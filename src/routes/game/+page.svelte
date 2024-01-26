@@ -47,7 +47,7 @@
       (event instanceof KeyboardEvent && event.key === "Enter") ||
       event instanceof MouseEvent
     ) {
-    if (words.includes(inputText) && !foundWords.includes(inputText)) {
+      if (words.includes(inputText) && !foundWords.includes(inputText)) {
         foundWords = [...foundWords, inputText];
       }
       inputText = "";
@@ -56,30 +56,29 @@
   }
 </script>
 
-<main>
+<main class="m-40">
   <div class="flex justify-center items-center">
     <p class="text-8xl">{letters}</p>
   </div>
   <div class="flex justify-center items-center text-2xl">
     {#if words}
-    <p>Words Left:</p>
-    {words.length - foundWords.length}
-  {/if}
+      <p>Words Left:</p>
+      {words.length - foundWords.length}
+    {/if}
   </div>
-  <div class="flex justify-center items-center h-screen flex-col gap-10">
-    <div class="text-4xl text-center">
-      {#if foundWords}
-        <p>Correct Words:</p>
-        {#each foundWords as word}
-          <p>{word}</p>
-        {/each}
-      {/if}
-    </div>
+  <div class="flex items-center h-screen flex-col gap-10 text-4xl text-center">
+    {#if foundWords}
+      <p>Correct Words:</p>
+      {#each foundWords as word}
+        <p>{word}</p>
+      {/each}
+    {/if}
     <div class="flex w-full max-w-sm items-center space-x-2">
       <Input
         on:keydown={handleSubmit}
         bind:value={inputText}
         placeholder="Enter a Buzzword!"
+        class="bg-black text-white"
       />
       <Button type="submit" on:click={handleSubmit}>Submit</Button>
     </div>
